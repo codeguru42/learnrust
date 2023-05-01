@@ -1,4 +1,3 @@
-use std::fmt::format;
 use bracket_lib::prelude::*;
 
 const SCREEN_WIDTH: i32 = 80;
@@ -33,7 +32,7 @@ impl State {
     fn dead(&mut self, ctx: &mut BTerm) {
         ctx.cls();
         ctx.print_centered(5, "You are dead!");
-        ctx.print_centered(6, "You earned {} points", self.score);
+        ctx.print_centered(6, &format!("You earned {} points", self.score));
         ctx.print_centered(8, "(P) Play Game");
         ctx.print_centered(9, "(Q) Quit Game");
 
@@ -148,7 +147,7 @@ struct Obstacle {
 
 impl Obstacle {
     fn new(x: i32, score: i32) -> Self {
-        let mut random = RandomeNumberGenerator::new();
+        let mut random = RandomNumberGenerator::new();
         Obstacle {
             x,
             gap_y: random.range(10, 40),
