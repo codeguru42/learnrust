@@ -1,3 +1,4 @@
+use std::fmt::format;
 use bracket_lib::prelude::*;
 
 const SCREEN_WIDTH: i32 = 80;
@@ -13,7 +14,9 @@ enum GameMode {
 struct State {
     frame_time: f32,
     mode: GameMode,
+    obstacle: Obstacle,
     player: Player,
+    score: i32,
 }
 
 impl State {
@@ -21,7 +24,9 @@ impl State {
         State {
             frame_time: 0.0,
             mode: GameMode::Menu,
+            obstacle: Obstacle::new(SCREEN_WIDTH, 0),
             player: Player::new(5, 25),
+            score: 0,
         }
     }
 
@@ -67,7 +72,15 @@ impl State {
         }
         self.player.render(ctx);
         ctx.print(0, 0, "Press SPACE to flap.");
-        if self.player.y > SCREEN_HEIGHT {
+        ctx.print(0, 1, &format!("Score: {}", self.score));
+
+        self.obstacle.render(ctx, self.player.x);
+        if self.player.x > self.obstacle.x {
+            self.score += 1;
+            self.obstacle = Obstacle::new(self.player.x + SCREEN_WIDTH, self.score);
+        }
+
+        if self.player.y > SCREEN_HEIGHT || self.obstacle.hit_obstacle(&self.player){
             self.mode = GameMode::End;
         }
     }
