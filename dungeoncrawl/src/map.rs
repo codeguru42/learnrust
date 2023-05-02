@@ -1,5 +1,3 @@
-use std::collections::BTreeMap;
-
 use crate::prelude::*;
 
 const NUM_TILES: usize = (SCREEN_WIDTH * SCREEN_HEIGHT) as usize;
@@ -30,8 +28,12 @@ impl Map {
             for x in 0..SCREEN_WIDTH {
                 let idx = map_idx(x, y);
                 match self.tiles[idx] {
-                    TileType::Floor => ctx.set(x, y, YELLOW, BLACK, to_cp437('.'));
-                    TileType::Wall => ctx.set(x, y, YELLOW, BLACK, to_cp437('#'));
+                    TileType::Floor => {
+                        ctx.set(x, y, YELLOW, BLACK, to_cp437('.'));
+                    }
+                    TileType::Wall => {
+                        ctx.set(x, y, YELLOW, BLACK, to_cp437('#'));
+                    }
                 }
             }
         }
