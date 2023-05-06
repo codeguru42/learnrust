@@ -1,5 +1,6 @@
 use prelude::*;
 
+mod camera;
 mod map;
 mod map_builder;
 mod player;
@@ -7,6 +8,7 @@ mod player;
 mod prelude {
     pub use bracket_lib::prelude::*;
 
+    pub use crate::camera::*;
     pub use crate::map::*;
     pub use crate::map_builder::*;
     pub use crate::player::*;
@@ -19,6 +21,7 @@ mod prelude {
 }
 
 struct State {
+    camera: Camera,
     map: Map,
     player: Player,
 }
@@ -28,6 +31,7 @@ impl State {
         let mut rng = RandomNumberGenerator::new();
         let map_builder = MapBuilder::new(&mut rng);
         Self {
+            camera: Camera::new(map_builder.player_start),
             map: map_builder.map,
             player: Player::new(map_builder.player_start),
         }
