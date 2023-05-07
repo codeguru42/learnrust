@@ -8,6 +8,8 @@ mod player;
 mod prelude {
     pub use bracket_lib::prelude::*;
 
+    pub use legion::*;
+
     pub use crate::camera::*;
     pub use crate::map::*;
     pub use crate::map_builder::*;
