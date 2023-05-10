@@ -1,6 +1,7 @@
 use prelude::*;
 
 mod camera;
+mod components;
 mod map;
 mod map_builder;
 
@@ -10,6 +11,7 @@ mod prelude {
     pub use legion::*;
 
     pub use crate::camera::*;
+    pub use crate::components::*;
     pub use crate::map::*;
     pub use crate::map_builder::*;
 
