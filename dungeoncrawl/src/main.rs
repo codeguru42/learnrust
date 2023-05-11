@@ -44,7 +44,7 @@ impl State {
         Self {
             ecs,
             resources,
-            systems: build_scheduler,
+            systems: build_scheduler(),
         }
     }
 }
