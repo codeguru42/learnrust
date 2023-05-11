@@ -1,5 +1,5 @@
 use crate::prelude::*;
 
-pub fn build_scheduler() -> Scheduler {
-    Scheduler::builder().build()
+pub fn build_scheduler() -> Schedule {
+    Schedule::builder().build()
 }
