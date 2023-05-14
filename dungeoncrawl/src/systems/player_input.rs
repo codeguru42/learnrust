@@ -9,7 +9,7 @@ pub fn player_input(
     #[resource] key: &Option<VirtualKeyCode>,
     #[resource] camera: &mut Camera,
 ) {
-    if let Some(key) = ctx.key {
+    if let Some(key) = key {
         let delta = match key {
             VirtualKeyCode::Left => Point::new(-1, 0),
             VirtualKeyCode::Right => Point::new(1, 0),
