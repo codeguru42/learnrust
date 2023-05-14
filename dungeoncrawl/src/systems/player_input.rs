@@ -2,7 +2,7 @@ use crate::prelude::*;
 
 #[system]
 #[write_component(Point)]
-#[write_component(Player)]
+#[read_component(Player)]
 pub fn player_input(
     ecs: &mut SubWorld,
     #[resource] map: &Map,
