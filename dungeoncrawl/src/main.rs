@@ -11,6 +11,8 @@ mod prelude {
     pub use bracket_lib::prelude::*;
 
     pub use legion::*;
+    pub use legion::world::SubWorld;
+    pub use legion::systems::CommandBuffer;
 
     pub use crate::camera::*;
     pub use crate::components::*;
