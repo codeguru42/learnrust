@@ -9,7 +9,7 @@ pub fn end_turn(
 ) {
     let mut player_hp = <(&Health, &Point)>::query()
         .filter(component::<Player>());
-    let amulet = <&Point>::query()
+    let mut amulet = <&Point>::query()
         .filter(component::<AmuletOfYala>());
     let amulet_pos = amulet
         .iter(ecs)
@@ -25,7 +25,7 @@ pub fn end_turn(
 
     player_hp
         .iter(ecs)
-        .for_each(|hp, pos| {
+        .for_each(|(hp, pos)| {
             if hp.current < 1 {
                 new_state = TurnState::GameOver;
             }
