@@ -76,6 +76,18 @@ impl State {
         }
     }
 
+    fn victory(&mut self, ctx: &mut BTerm) {
+        ctx.set_active_console(2);
+        ctx.print_color_centered(2, GREEN, BLACK, "You have won!");
+        ctx.print_color_centered(4, WHITE, BLACK, "You put on the Amulet of Yala and feel its power course through your veins.");
+        ctx.print_color_centered(5, WHITE, BLACK, "Your town is saved, and you can return to your normal life.");
+        ctx.print_color_centered(7, GREEN, BLACK, "Press 1 to play again.");
+
+        if let Some(VirtualKeyCode::Key1) = ctx.key {
+            self.reset_game_state();
+        }
+    }
+
     fn reset_game_state(&mut self) {
         self.ecs = World::default();
         self.resources = Resources::default();
@@ -121,6 +133,9 @@ impl GameState for State {
             },
             TurnState::GameOver => {
                 self.game_over(ctx);
+            }
+            TurnState::Victory => {
+                self.victory(ctx);
             }
         }
 
