@@ -2,6 +2,7 @@ use crate::prelude::*;
 
 #[system]
 #[read_component(Health)]
+#[read_component(Point)]
 #[read_component(Player)]
 pub fn end_turn(
     ecs: &SubWorld,
