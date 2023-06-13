@@ -1,3 +1,4 @@
+use std::process::id;
 use crate::prelude::*;
 
 const NUM_TILES: usize = (SCREEN_WIDTH * SCREEN_HEIGHT) as usize;
@@ -94,5 +95,9 @@ impl BaseMap for Map {
                 self.index_to_point2d(idx1),
                 self.index_to_point2d(idx2),
             )
+    }
+
+    fn is_opaque(&self, idx: usize) -> bool {
+        self.tiles[idx] != TileType::Floor
     }
 }
