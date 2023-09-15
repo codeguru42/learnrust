@@ -1,6 +1,7 @@
 mod empty;
 mod rooms;
 mod automata;
+mod drunkard;
 
 use crate::prelude::*;
 use empty::EmptyArchitect;
