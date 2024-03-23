@@ -3,6 +3,7 @@ mod rooms;
 mod automata;
 mod drunkard;
 mod prefab;
+mod themes;
 
 use crate::prelude::*;
 use empty::EmptyArchitect;
@@ -148,4 +149,8 @@ impl MapBuilder {
         }
         spawns
     }
+}
+
+pub trait MapTheme : Sync + Send {
+    fn tile_to_render(&self, tile_type: TileType) -> FontCharType;
 }
