@@ -1,5 +1,5 @@
-use crate::prelude::*;
 use super::MapArchitect;
+use crate::prelude::*;
 
 const STAGGER_DISTANCE: usize = 400;
 const NUM_TILES: usize = (SCREEN_WIDTH * SCREEN_HEIGHT) as usize;
@@ -21,23 +21,28 @@ impl MapArchitect for DrunkardWalkArchitect {
         mb.fill(TileType::Wall);
         let center = Point::new(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
         self.drunkard(&center, rng, &mut mb.map);
-        while mb.map.tiles.iter().filter(|t| **t == TileType::Floor).count() < DESIRED_FLOOR {
+        while mb
+            .map
+            .tiles
+            .iter()
+            .filter(|t| **t == TileType::Floor)
+            .count()
+            < DESIRED_FLOOR
+        {
             self.drunkard(
-                &Point::new(
-                    rng.range(0, SCREEN_WIDTH),
-                    rng.range(0, SCREEN_HEIGHT)
-                ),
+                &Point::new(rng.range(0, SCREEN_WIDTH), rng.range(0, SCREEN_HEIGHT)),
                 rng,
-                &mut mb.map
+                &mut mb.map,
             );
             let dijkstra_map = DijkstraMap::new(
                 SCREEN_WIDTH,
                 SCREEN_HEIGHT,
                 &vec![mb.map.point2d_to_index(center)],
                 &mb.map,
-                1024.0
+                1024.0,
             );
-            dijkstra_map.map
+            dijkstra_map
+                .map
                 .iter()
                 .enumerate()
                 .filter(|(_, distance)| *distance > &2000.0)

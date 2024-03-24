@@ -1,11 +1,11 @@
-use crate::prelude::*;
 use super::MapArchitect;
+use crate::prelude::*;
 
-pub struct RoomsArchitect{}
+pub struct RoomsArchitect {}
 
 impl MapArchitect for RoomsArchitect {
     fn new(&mut self, rng: &mut RandomNumberGenerator) -> MapBuilder {
-        let mut mb = MapBuilder{
+        let mut mb = MapBuilder {
             map: Map::new(),
             rooms: Vec::new(),
             monster_spawns: Vec::new(),
