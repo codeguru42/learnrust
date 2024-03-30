@@ -1,5 +1,6 @@
-pub use crate::prelude::*;
 use std::collections::HashSet;
+
+pub use crate::prelude::*;
 
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct Render {
@@ -69,4 +70,9 @@ impl FieldOfView {
             is_dirty: true,
         }
     }
+}
+
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct ProvidesHealing {
+    pub heal_amount: i32,
 }
