@@ -72,3 +72,16 @@ pub fn spawn_healing_potion(ecs: &mut World, pos: Point) {
         ProvidesHealing { amount: 6 },
     ));
 }
+
+pub fn spawn_magic_mapper(ecs: &mut World, pos: Point) {
+    ecs.push((
+        Item,
+        pos,
+        Render {
+            color: ColorPair::new(WHITE, BLACK),
+            glyph: to_cp437('{'),
+        },
+        Name("Dungeon Map".to_string()),
+        ProvidesDungeonMap {},
+    ));
+}
