@@ -85,3 +85,12 @@ pub fn spawn_magic_mapper(ecs: &mut World, pos: Point) {
         ProvidesDungeonMap {},
     ));
 }
+
+pub fn spawn_entity(ecs: &mut World, rng: &mut RandomNumberGenerator, pos: Point) {
+    let roll = rng.roll_dice(1, 6);
+    match roll {
+        1 => spawn_healing_potion(ecs, pos),
+        2 => spawn_magic_mapper(ecs, pos),
+        _ => spawn_monster(ecs, rng, pos),
+    }
+}
