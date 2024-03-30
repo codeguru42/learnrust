@@ -74,7 +74,7 @@ impl FieldOfView {
 
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct ProvidesHealing {
-    pub heal_amount: i32,
+    pub amount: i32,
 }
 
 #[derive(Clone, Copy, Debug, PartialEq)]
