@@ -34,6 +34,7 @@ pub fn player_input(
                         commands.remove_component::<Point>(*entity);
                         commands.add_component(*entity, Carried(player));
                     });
+                Point::zero()
             }
             _ => Point::zero(),
         };
